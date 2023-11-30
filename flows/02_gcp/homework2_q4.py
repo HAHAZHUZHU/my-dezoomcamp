@@ -39,7 +39,8 @@ def get_row_number(df: pd.DataFrame) -> int:
 @task()
 def write_local(df: pd.DataFrame, color: str, dataset_file: str) -> Path:
     """Write DataFrame out locally as parquet file"""
-    os.mkdir(f"data/{color}")
+    if not os.path.exists(f"data/{color}"):
+        os.mkdir(f"data/{color}")
     path = Path(f"data/{color}/{dataset_file}.parquet")
     df.to_parquet(path, compression="gzip")
     return path

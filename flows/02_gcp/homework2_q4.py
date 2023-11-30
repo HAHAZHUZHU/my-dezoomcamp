@@ -76,8 +76,4 @@ def etl_web_to_gcs() -> None:
 
 
 if __name__ == "__main__":
-    # from prefect.filesystems import GitHub
-
-    # github_block = GitHub.load("dezoom")
-
     etl_web_to_gcs()
